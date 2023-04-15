@@ -79,7 +79,9 @@ export default function Home() {
 
           {state !== 'new' && (
             <div className="mt-6 p-1 w-full flex flex-1 flex-col border-2 rounded-md border-gray-700 space-y-1">
-              <div className="p-2 bg-green-800 text-green-50 rounded">
+              <div className="p-2 bg-transparent text-gray-50 rounded">
+                <h2 className="font-bold mb-1.5">Possible Answers</h2>
+
                 <ul className="text-lg">
                   {answers.map((sentence, index) => (
                     <li key={index} className="leading-8">{sentence}</li>
@@ -191,7 +193,7 @@ function checkAnswer(submission, answers, threshold = 0.5) {
 
   submission = normalize(submission)
   answers = answers.map(normalize)
-  
+
   // Check if submission is one of the answers
   if (answers.some((answer) => answer === submission)) {
     return true

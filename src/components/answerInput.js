@@ -34,11 +34,11 @@ export default function AnswerInput({ onSubmit, state }) {
         />
 
         <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
-          <kbd className="inline-flex items-center rounded border border-gray-900 px-3 font-sans text-sm text-gray-400">
+          <button type="submit" className="inline-flex items-center rounded border border-gray-900 px-3 font-sans text-sm text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
-          </kbd>
+          </button>
         </div>
       </form>
     </div>
