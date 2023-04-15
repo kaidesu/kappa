@@ -8,7 +8,7 @@ export default function Layout({ children }) {
       </div>
       
       <div className="p-6 text-center text-sm">
-        <Link href="https://github.com/kaidesu" className="text-gray-400 hover:text-red-400 underline underline-offset-4">
+        <Link href="https://github.com/kaidesu" className="text-gray-400 hover:text-purple-400 underline underline-offset-4">
           カイが開発しました
         </Link>
       </div>

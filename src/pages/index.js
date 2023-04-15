@@ -54,7 +54,9 @@ export default function Home() {
       <div className="w-full mb-6 text-center">
         <p className="text-sm mb-1.5">以下を日本語に訳してください。</p>
 
-        <div className="text-3xl">{question}</div>
+        <div className="text-3xl mb-3">{question}</div>
+
+        <span className="px-2 py-1 bg-yellow-600 text-white font-bold text-xs rounded">{sentence.level}</span>
       </div>
 
       <div className="w-full max-w-xl flex flex-col items-center">
