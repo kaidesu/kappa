@@ -11,6 +11,10 @@ export default function Layout({ children }) {
         <Link href="https://github.com/kaidesu" className="text-gray-400 hover:text-purple-400 underline underline-offset-4">
           カイが開発しました
         </Link>
+        ・
+        <Link href="https://github.com/kaidesu/kappa" className="text-gray-400 hover:text-purple-400 underline underline-offset-4">
+          GitHub
+        </Link>
       </div>
     </div>
   )
