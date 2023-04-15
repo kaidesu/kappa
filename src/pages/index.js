@@ -66,15 +66,21 @@ export default function Home() {
           {state === 'correct' && (
             <div className="mt-6 text-center w-full">
               <div className=" px-3 py-1.5 rounded-md bg-green-500 text-green-50">
-                Correct
+                正解
               </div>
+
+              <ul className="mt-2 text-lg text-green-400 list-[circle]">
+                {answers.map((answer, index) => (
+                  <li key={index}>{answer}</li>
+                ))}
+              </ul>
             </div>
           )}
 
           {state === 'incorrect' && (
             <div className="mt-6 w-full flex flex-1 flex-col items-center">
               <div className=" px-3 py-1.5 rounded-md bg-red-500 text-red-50 w-full">
-                Incorrect
+                不正解
               </div>
 
               <ul className="mt-2 text-lg text-red-400 list-[circle]">
