@@ -1,0 +1,64 @@
+[
+  {
+    "question": "How many apples did you buy?",
+    "answers": [
+      "りんごをいくつ買いましたか。"
+    ]
+  },
+  {
+    "question": "I bought five apples.",
+    "answers": [
+      "５つりんごを買いました。",
+      "５つりんごを買いた。"
+    ]
+  },
+  {
+    "question": "There are a variety of shops.",
+    "answers": [
+      "いろいろな店があります。",
+      "いろいろな店がある。"
+    ]
+  },
+  {
+    "question": "The cost of living in Tokyo is expensive.",
+    "answers": [
+      "東京はぶっかが高いです。"
+    ]
+  },
+  {
+    "question": "Living in Tokyo is fun.",
+    "answers": [
+      "東京の生活は楽しいです。"
+    ]
+  },
+  {
+    "question": "I don't have enough money.",
+    "answers": [
+      "お金が足りません。"
+    ]
+  },
+  {
+    "question": "I don't have small change.",
+    "answers": [
+      "こまかいお金がありません。"
+    ]
+  },
+  {
+    "question": "The change is 850 yen.",
+    "answers": [
+      "おつりは８５０円です。"
+    ]
+  },
+  {
+    "question": "I will pay the money.",
+    "answers": [
+      "お金を払います。"
+    ]
+  },
+  {
+    "question": "The Japanese currency is the yen.",
+    "answers": [
+      "日本のお金は円です。"
+    ]
+  }
+]
