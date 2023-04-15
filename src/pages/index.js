@@ -19,7 +19,7 @@ export default function Home() {
     }
 
     // Check if submission is one of the answers
-    if (sentence.answers.some((answer) => answer === submission)) {
+    if (checkAnswer(submission, answers)) {
       setState('correct')
       return
     }
@@ -129,4 +129,90 @@ export default function Home() {
       </div>
     </>
   )
+}
+
+// Calculate the similarity between two strings.
+function similarity(string1, string2) {
+  let longer = string1
+  let shorter = string2
+
+  // Determine which string is longer
+  if (string1.length < string2.length) {
+    longer = string2
+    shorter = string1
+  }
+
+  const longerLength = longer.length
+
+  // If both strings are empty, they are 100% similar.
+  if (longerLength === 0) {
+    return 1.0
+  }
+
+  // Calculate the Levenshtein distance
+  return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength)
+}
+
+// Calculate the Levenshtein distance between two strings.
+function editDistance(string1, string2) {
+  string1 = string1.toLowerCase()
+  string2 = string2.toLowerCase()
+
+  const costs = []
+
+  for (let i = 0; i <= string1.length; i++) {
+    let lastValue = i
+
+    for (let j = 0; j <= string2.length; j++) {
+      if (i === 0) {
+        costs[j] = j
+      } else {
+        if (j > 0) {
+          let newValue = costs[j - 1]
+
+          // If characters are not the same, increment the cost
+          if (string1.charAt(i - 1) !== string2.charAt(j - 1)) {
+            newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1
+          }
+
+          costs[j - 1] = lastValue
+          lastValue = newValue
+        }
+      }
+    }
+  }
+
+  return costs[string2.length]
+}
+
+function checkAnswer(submission, answers, threshold = 0.5) {
+  // Normalize the strings by removing trailing punctuation
+  const normalize = (str) => str.replace(/[,.、。!！?？]+$/, '')
+
+  submission = normalize(submission)
+  answers = answers.map(normalize)
+  
+  // Check if submission is one of the answers
+  if (answers.some((answer) => answer === submission)) {
+    return true
+  }
+
+  // Check if submission is empty
+  if (submission === '') {
+    return false
+  }
+
+  // Check if the difference in length between submission and answers is too big
+  for (const answer of answers) {
+    const lengthDifference = Math.abs(submission.length - answer.length)
+    const maxLength = Math.max(submission.length, answer.length)
+
+    if (lengthDifference / maxLength <= (1 - threshold)) {
+      if (similarity(submission, answer) >= threshold) {
+        return true
+      }
+    }
+  }
+
+  return false
 }
