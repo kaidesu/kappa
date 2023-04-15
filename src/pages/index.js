@@ -65,7 +65,7 @@ export default function Home() {
         <div className="h-96 w-full">
           {state === 'correct' && (
             <div className="mt-6 text-center w-full">
-              <div className="w-full px-3 py-1.5 rounded-md bg-green-500 text-green-50 text-center">
+              <div className="px-3 py-1.5 rounded-md bg-green-500 text-green-50">
                 正解
               </div>
 
@@ -79,7 +79,7 @@ export default function Home() {
 
           {state === 'incorrect' && (
             <div className="mt-6 w-full flex flex-1 flex-col items-center">
-              <div className="w-full px-3 py-1.5 rounded-md bg-red-500 text-red-50 text-center">
+              <div className="px-3 py-1.5 rounded-md bg-red-500 text-red-50">
                 不正解
               </div>
 
