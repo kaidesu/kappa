@@ -3,62 +3,50 @@
     "question": "How many apples did you buy?",
     "answers": [
       "りんごをいくつ買いましたか。"
-    ]
+    ],
+    "vocabulary": [
+      { "word": "りんご", "reading": "", "meaning": "apple" },
+      { "word": "いくつ", "reading": "", "meaning": "how many" },
+      { "word": "買う", "reading": "かう", "meaning": "to buy" }
+    ],
+    "grammar": [
+      { "grammar": "を〜", "meaning": "object particle" },
+      { "grammar": "〜ました", "meaning": "polite past-tense verb" },
+      { "grammar": "〜か", "meaning": "question particle" }
+    ],
+    "level": "N5"
   },
   {
     "question": "I bought five apples.",
     "answers": [
       "５つりんごを買いました。",
       "５つりんごを買いた。"
-    ]
-  },
-  {
-    "question": "There are a variety of shops.",
-    "answers": [
-      "いろいろな店があります。",
-      "いろいろな店がある。"
-    ]
+    ],
+    "vocabulary": [
+      { "word": "りんご", "reading": "", "meaning": "apple" },
+      { "word": "買う", "reading": "かう", "meaning": "to buy" }
+    ],
+    "grammar": [
+      { "grammar": "を〜", "meaning": "object particle" },
+      { "grammar": "〜ました", "meaning": "polite past-tense verb" }
+    ],
+    "level": "N5"
   },
   {
     "question": "The cost of living in Tokyo is expensive.",
     "answers": [
       "東京はぶっかが高いです。"
-    ]
-  },
-  {
-    "question": "Living in Tokyo is fun.",
-    "answers": [
-      "東京の生活は楽しいです。"
-    ]
-  },
-  {
-    "question": "I don't have enough money.",
-    "answers": [
-      "お金が足りません。"
-    ]
-  },
-  {
-    "question": "I don't have small change.",
-    "answers": [
-      "こまかいお金がありません。"
-    ]
-  },
-  {
-    "question": "The change is 850 yen.",
-    "answers": [
-      "おつりは８５０円です。"
-    ]
-  },
-  {
-    "question": "I will pay the money.",
-    "answers": [
-      "お金を払います。"
-    ]
-  },
-  {
-    "question": "The Japanese currency is the yen.",
-    "answers": [
-      "日本のお金は円です。"
-    ]
+    ],
+    "vocabulary": [
+      { "word": "東京", "reading": "とうきょう", "meaning": "Tokyo" },
+      { "word": "ぶっか", "reading": "", "meaning": "cost of living" },
+      { "word": "高い", "reading": "たかい", "meaning": "expensive" }
+    ],
+    "grammar": [
+      { "grammar": "〜は", "meaning": "topic particle" },
+      { "grammar": "〜が", "meaning": "subject particle" },
+      { "grammar": "〜です", "meaning": "polite copula" }
+    ],
+    "level": "N5"
   }
 ]

@@ -5,21 +5,21 @@ import sentences from '@/data/sentences.json'
 export default function Home() {
   // new, correct, incorrect
   const [state, setState] = useState('')
-  
-  const [question, setQuestion] = useState('')
-  const [answers, setAnswers] = useState([])
-  const [submission, setSubmission] = useState('')
+
+  const [sentence, setSentence] = useState({})
+  const question = sentence?.question || ''
+  const answers = sentence?.answers || []
+  const vocabulary = sentence?.vocabulary || []
+  const grammar = sentence?.grammar || []
 
   const handleOnSubmit = (submission) => {
-    setSubmission(submission)
-
     if (state !== 'new') {
       setState('new')
       return
     }
 
     // Check if submission is one of the answers
-    if (answers.some((answer) => answer === submission)) {
+    if (sentence.answers.some((answer) => answer === submission)) {
       setState('correct')
       return
     }
@@ -27,24 +27,22 @@ export default function Home() {
     setState('incorrect')
   }
 
-  const getNewQuestion = () => {
+  const getNewSentence = () => {
     const randomIndex = Math.floor(Math.random() * sentences.length)
-    const newQuestion = sentences[randomIndex].question
-    const newAnswers = sentences[randomIndex].answers
-
-    if (newQuestion === question) {
-      return getNewQuestion()
+    const newSentence = sentences[randomIndex]
+    
+    if (newSentence === sentence) {
+      return getNewSentence()
     }
 
-    setQuestion(newQuestion)
-    setAnswers(newAnswers)
+    setSentence(newSentence)
   }
 
   // Get random question/answer pair when state is new
   useMemo(() => {
     if (state !== 'new') return
 
-    getNewQuestion()
+    getNewSentence()
   }, [state])
 
   useEffect(() => {
@@ -64,30 +62,67 @@ export default function Home() {
 
         <div className="h-96 w-full">
           {state === 'correct' && (
-            <div className="mt-6 w-full flex flex-1 flex-col items-center">
-              <div className="w-full px-3 py-1.5 rounded-md bg-green-500 text-white text-center font-bold text-lg">
+            <div className="mt-6 w-full flex flex-1 flex-col items-center p-1 border-2 border-green-400 rounded-md">
+              <div className="w-full px-3 py-1.5 rounded bg-green-500 text-green-50 text-center font-bold text-lg">
                 正解
               </div>
-
-              <ul className="mt-2 text-lg text-green-400 list-[circle]">
-                {answers.map((answer, index) => (
-                  <li key={index}>{answer}</li>
-                ))}
-              </ul>
             </div>
           )}
 
           {state === 'incorrect' && (
-            <div className="mt-6 w-full flex flex-1 flex-col items-center">
-              <div className="w-full px-3 py-1.5 rounded-md bg-red-500 text-white text-center font-bold text-lg">
+            <div className="mt-6 w-full flex flex-1 flex-col items-center p-1 border-2 border-red-400 rounded-md">
+              <div className="w-full px-3 py-1.5 rounded bg-red-500 text-red-50 text-center font-bold text-lg">
                 不正解
               </div>
+            </div>
+          )}
 
-              <ul className="mt-2 text-lg text-red-400 list-[circle]">
-                {answers.map((answer, index) => (
-                  <li key={index}>{answer}</li>
-                ))}
-              </ul>
+          {state !== 'new' && (
+            <div className="mt-6 p-1 w-full flex flex-1 flex-col border-2 rounded-md border-gray-700 space-y-1">
+              <div className="p-2 bg-green-800 text-green-50 rounded">
+                <ul className="text-lg">
+                  {answers.map((sentence, index) => (
+                    <li key={index} className="leading-8">{sentence}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                <div className="space-y-3">
+                  <div className="p-2 bg-sky-800 text-sky-50 rounded">
+                    <h2 className="font-bold mb-1.5">Vocabulary</h2>
+
+                    <ul className="text-lg">
+                      {vocabulary.map((item, index) => (
+                        <li key={index} className="flex justify-between items-center">
+                          <span>
+                            {item.word}
+                            {item.reading && (
+                              <span className=" text-sky-200">【{item.reading}】</span>
+                            )}
+                          </span>
+                          <span>{item.meaning}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="p-2 bg-purple-800 text-purple-50 rounded">
+                    <h2 className="font-bold mb-1.5">Grammar</h2>
+
+                    <ul className="text-lg">
+                      {grammar.map((item, index) => (
+                        <li key={index} className="flex justify-between items-center">
+                          <span>{item.grammar}</span>
+                          <span>{item.meaning}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>
